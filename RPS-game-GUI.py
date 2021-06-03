@@ -45,10 +45,10 @@ user_pos2.grid(row=2, column=6)
 user_pos3.grid(row=2, column=4)
 
 # scores
-playerScore = Label(root, text=0, font=100, bg="#9b59b6", fg="white")
+userScore = Label(root, text=0, font=100, bg="#9b59b6", fg="white")
 computerScore = Label(root, text=0, font=100, bg="#9b59b6", fg="white")
 computerScore.grid(row=1, column=2)
-playerScore.grid(row=1, column=4)
+userScore.grid(row=1, column=4)
 
 # indicators
 user_indicator = Label(root, font=50, text="USER", bg="#9b59b6", fg="white")
@@ -68,48 +68,37 @@ def updateMessage(x):
     msg['text'] = x
 
 # update user score
-
-
-def updateUserScore():
+def updateUserScore(playerScore):
     score = int(playerScore["text"])
     score += 1
     playerScore["text"] = str(score)
 
-# update computer score
-
-
-def updateCompScore():
-    score = int(computerScore["text"])
-    score += 1
-    computerScore["text"] = str(score)
 
 # check winner
-
-
 def checkWin(player, computer):
     if player == computer:
         updateMessage("Its a tie!!!")
     elif player == "rock":
         if computer == "paper":
             updateMessage('You lose!')
-            updateCompScore()
+            updateUserScore(computerScore)
         else:
             updateMessage('You win!')
-            updateUserScore()
+            updateUserScore(userScore)
     elif player == "paper":
         if computer == "scissors":
             updateMessage('You lose!')
-            updateCompScore()
+            updateUserScore(computerScore)
         else:
             updateMessage('You win!')
-            updateUserScore()
+            updateUserScore(userScore)
     elif player == "scissors":
         if computer == "rock":
             updateMessage('You lose!')
-            updateCompScore()
+            updateUserScore(computerScore)
         else:
             updateMessage('You win!')
-            updateUserScore()
+            updateUserScore(userScore)
 
     else:
         pass

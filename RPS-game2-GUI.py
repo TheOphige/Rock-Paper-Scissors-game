@@ -67,21 +67,13 @@ msg.grid(row=6, column=3)
 def updateMessage(x):
     msg['text'] = x
 
-# update user1 score
+# update user score
 
-
-def updateUser1Score():
-    score = int(user1Score["text"])
+def updateUserScore(playerScore):
+    score = int(playerScore["text"])
     score += 1
-    user1Score["text"] = str(score)
+    playerScore["text"] = str(score)
 
-# update user2 score
-
-
-def updateUser2Score():
-    score = int(user2Score["text"])
-    score += 1
-    user2Score["text"] = str(score)
 
 # check winner
 
@@ -92,24 +84,24 @@ def checkWin(user1, user2):
     elif user1 == "rock":
         if user2 == "paper":
             updateMessage('User2 wins!')
-            updateUser2Score()
+            updateUserScore(user2Score)
         else:
             updateMessage('User1 wins')
-            updateUser1Score()
+            updateUserScore(user1Score)
     elif user1 == "paper":
         if user2 == "scissors":
             updateMessage('User2 wins!')
-            updateUser2Score()
+            updateUserScore(user2Score)
         else:
             updateMessage('User1 wins!')
-            updateUser1Score()
+            updateUserScore(user1Score)
     elif user1 == "scissors":
         if user2 == "rock":
             updateMessage('User2 wins!')
-            updateUser2Score()
+            updateUserScore(user2Score)
         else:
             updateMessage('User1 wins!')
-            updateUser1Score()
+            updateUserScore(user1Score)
 
     else:
         pass
